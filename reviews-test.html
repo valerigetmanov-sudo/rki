@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Отзывы участников — РКИ детям | Дизайн-превью</title>
+<style>
+*{box-sizing:border-box}
+:root{--ink:#252941;--muted:#798197;--blue:#526df2;--soft:#fbfbff}
+body{margin:0;background:#fff;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink)}
+.top{height:72px;padding:0 max(5vw,28px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #f0eff7;background:#fff}
+.logo{font-size:25px;font-weight:850;letter-spacing:-1.1px;color:#4e438c}.logo em{font-weight:600;font-style:normal;color:#ed729d;font-size:18px}
+.nav{display:flex;gap:28px;color:#626780;font-size:13px}.nav b{color:#5347a8}
+.top .action{background:#ef5a94;color:white;border:0;border-radius:25px;padding:12px 20px;font-weight:700}
+.placeholder{background:linear-gradient(110deg,#f9f5ff,#fff9f5);height:94px;display:flex;align-items:center;justify-content:center;color:#a09ab2;font-size:13px}
+section{background:radial-gradient(ellipse at 5% 40%,#ffece85d,transparent 38%),radial-gradient(ellipse at 96% 60%,#e9eaffad,transparent 32%),#fff;padding:45px max(4vw,22px) 42px}
+.sectionhead{text-align:center;max-width:940px;margin:0 auto 28px}
+.kicker{display:inline-block;border-radius:100px;background:#f1edff;color:#6453ad;letter-spacing:.1em;font-weight:750;font-size:10px;padding:9px 16px;text-transform:uppercase}
+h1{font-size:clamp(25px,2.7vw,38px);letter-spacing:-1px;margin:12px 0 8px;line-height:1.2}
+.subtitle{font-size:14px;color:#8790a4;margin:0}
+.gallery{width:min(100%,1270px);margin:auto;display:flex;gap:17px;align-items:stretch}
+.gallery-pane{position:relative;flex:1;min-width:0;min-height:0;height:550px;border-radius:22px;overflow:hidden}
+.scroller{width:100%;height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:18px 5px 8px;outline-offset:-3px;scroll-behavior:smooth}
+.scroller::-webkit-scrollbar{display:none}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;align-items:start}
+.col{display:flex;flex-direction:column;gap:16px}.col:nth-child(2){padding-top:66px}.col:nth-child(3){padding-top:122px}
+.review{background:#fff;box-shadow:0 6px 26px rgba(52,56,112,.072);border:1px solid #e9e7f5;border-radius:18px;padding:21px 23px;break-inside:avoid}
+.review:nth-child(4n+2){background:#fff9fa}.review:nth-child(4n+3){background:#f9faff}.review:nth-child(4n+4){background:#fffdf7}
+.mark{font-family:Georgia,serif;color:#a795e7;line-height:.6;font-size:35px;margin-top:5px}
+.quote{margin:10px 0 21px;font-size:14px;line-height:1.58;color:#42475f;overflow-wrap:anywhere}
+.person{font-size:13px;font-weight:800;color:#36334d}
+.email{font-size:11px;color:#8890a2;margin-top:5px;white-space:nowrap}
+.mask{display:inline-flex;vertical-align:-.15em;min-width:46px;max-width:67px;height:1.05em;position:relative;margin-left:2px;overflow:hidden;align-items:center;justify-content:center;border-radius:6px;background:#e3e7f0}
+.mask:before{content:"";position:absolute;inset:-4px;background:repeating-linear-gradient(115deg,#e0e6f0 0 8px,#c9d2e4 9px 13px,#f4f6f9 15px 22px);filter:blur(4px)}
+.mask i{font-style:normal;color:#8093b8;letter-spacing:-1px;filter:blur(2.6px);opacity:.75;position:relative;user-select:none}
+.fade{pointer-events:none;position:absolute;left:0;right:0;height:66px;z-index:2}.fade.top{top:0;background:linear-gradient(#ffffffea,transparent)}.fade.bottom{bottom:0;background:linear-gradient(transparent,#fffffff5)}
+.controls{width:83px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.arrow{font-size:23px;cursor:pointer;display:grid;place-items:center;width:48px;height:42px;border-radius:13px;border:1px solid #d9dfff;background:white;color:#4d64da;box-shadow:0 2px 9px #4048910b}
+.track{background:#e1e9ff;border:2px solid #afc5ff;width:40px;border-radius:20px;flex:1;position:relative;cursor:pointer;min-height:200px;box-shadow:inset 0 0 0 4px #f4f7ff}
+.thumb{position:absolute;top:0;left:2px;width:32px;height:98px;border-radius:17px;background:linear-gradient(#7f97ff,#416af1);border:2px solid #fff;box-shadow:0 5px 15px #5274d577;cursor:grab;touch-action:none;display:flex;align-items:center;justify-content:center;color:white;font-size:17px;font-weight:900}
+.thumb:active{cursor:grabbing}
+.count{font-size:12px;white-space:nowrap;font-weight:800;color:#4e62be}
+.legend{margin:22px auto 0;text-align:center;color:#7b8296;font-size:13px}
+.metrics{text-align:center;margin:15px auto 0;color:#6f7292;font-size:12px}.metrics b{color:#424b87}
+.next{padding:38px;text-align:center;background:#f5f1ff;font-size:24px;font-weight:750;color:#524884}
+.next span{font-size:13px;display:block;margin-top:6px;color:#8e88a7;font-weight:400}
+@media(max-width:840px){.nav{display:none}.cols{gap:9px}.col{gap:9px}.col:nth-child(2){padding-top:45px}.col:nth-child(3){padding-top:90px}.review{padding:14px}.quote{font-size:12px}.email{font-size:10px}.gallery{gap:4px}.controls{width:55px}.track{width:31px}.thumb{width:23px}.gallery-pane{height:490px}}
+@media(max-width:550px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}.col:nth-child(3){display:none}.col:nth-child(2){padding-top:55px}.gallery-pane{height:540px}.kicker{font-size:9px}section{padding:38px 12px}.review{padding:13px}.email{white-space:normal}.quote{font-size:12px}.top .action{font-size:11px;padding:10px}.subtitle{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="logo">РКИ <em>детям</em></div><nav class="nav"><span>О конференции</span><span>Программа</span><span>Спикеры</span><b>Отзывы</b><span>Как участвовать</span></nav><button class="action">Принять участие</button></header>
+<div class="placeholder">↑ Здесь на лендинге находятся программа и спикеры</div>
+<section>
+<div class="sectionhead"><div class="kicker">Отзывы участников предыдущего мероприятия</div><h1>Что говорят участники наших конференций</h1><p class="subtitle">Реальные впечатления преподавателей после конференции «РКИ детям» 2025 года</p></div>
+<div class="gallery">
+<div class="gallery-pane"><div class="scroller" id="scroll" tabindex="0" aria-label="Прокручиваемая галерея отзывов"><div class="cols"><div class="col"></div><div class="col"></div><div class="col"></div></div></div><div class="fade top"></div><div class="fade bottom"></div></div>
+<div class="controls"><button class="arrow" id="up" aria-label="Предыдущие отзывы">↑</button><div class="track" id="track" role="scrollbar" aria-label="Прокрутка отзывов" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0"><div class="thumb" id="thumb" aria-hidden="true">⋮</div></div><div class="count" id="count">01 / 24</div><button class="arrow" id="down" aria-label="Следующие отзывы">↓</button></div>
+</div>
+<div class="legend">Прокручивайте отзывы колёсиком мыши, стрелками или перетаскивайте синий ползунок справа</div>
+<div class="metrics"><b>24 реальных отзыва</b> · Высота области 550 px · <span id="distance"></span> · Прокручено <span id="progress">0%</span></div>
+</section>
+<div class="next">Выберите формат участия<span>Следующий раздел лендинга</span></div>
+<script>
+const reviews = [["Анна","Ко","mo","yandex.ru","Мне хочется выразить огромную благодарность всем спикерам и организаторам за методические выходные. Мне было очень интересно. Я почерпнула множество идей для себя и зарядилась вдохновением. Новый этап моей профессиональной деятельности получил мощнейший заряд! Спасибо!"],["Алёна","Як","al","gmail.com","Спасибо большое! Очень понравилось, что реальные примеры материалов, ссылок и учебников, а не только теор часть. Еще очень приятно когда в выступлениях есть простой «человеческий тон». Даже удаленный формат сближает )"],["Варвара","Ши","vv","mail.ru","Всё было очень познавательно и ёмко, понравилась вовлечённость спикеров в то, чем они занимаются, искренняя любовь к делу и ученикам. Для меня такое эмоциональное инфополе сейчас очень важно, так как планирую расширить свой репертуар преподавания РКИ работой с детьми. А дети для меня — понятие terra incognita. За эти два дня они стали ближе :)))"],["Полина","Ли","po","gmail.com","Так как я не веду онлайн уроки, в первую очередь интересуют моменты, связанные с методикой проведения живых уроков, в оффлайн формате. В общем и целом, получила поддержку по многим вопросам от практикующих специалистов, записи тоже будут полезны."],["Вера","Ли","ka","gmail.com","Понравились темы с чистой практикой и практическими советами по играм с детьми. Спасибо."],["Кристина","Кл","ak","yandex.ru","Очень понравилось — всё чётко и по делу. Современные методики, талантливые молодые преподаватели. С удовольствием приму участие в подобных конференциях в следующий раз."],["Надежда","Па","na","mail.ru","Большое спасибо за мероприятие всем участникам и практико-ориентированные доклады! Все темы по-своему важны и интересны. Особенно те, которые связаны с инструментами работы с помощью современных технологий, методические находки всегда привлекательны и вдохновляют."],["Виктория","Пи","bl","yahoo.com","Мне нравится практическая направленность подобных мероприятий. А ещё хотелось бы больше вебинаров об организации работы с аудио и видео материалами, а также о механике процесса создания этих материалов с помощью ИИ. Спасибо!"],["Надежда","Са","ns","mail.ru","Интересно было услышать про различные игровые формы и методики работы — это актуально для всех возрастов при изучении иностранных языков. Спасибо огромное за организацию мероприятия!"],["Полина","Пе","po","gmail.com","Понравились доклады про театрализацию на занятиях и использование ИИ в подготовке учебных заданий и листов. Очень актуальная тема. Спасибо за ссылку на ценный ресурс ЩаСпоем!"],["Алёна","Хв","hv","gmail.com","Спасибо большое за очень полезный вебинар и интересных спикеров! Всегда работала со взрослыми студентами, не решалась, сомневалась начать обучение с детьми-билингвами. Надеюсь, этот вебинар будет первым шагом в обучении детей-билингвов."],["Надежда","Жу","NA","yandex.ru","Очень актуальны были идеи как раз для работы с детьми! Куча полезной информации, куча идей, спасибо большое за конференцию"],["Любовь","Ша","sh","ya.ru","Атмосфера на конференции очень доброжелательная, узнала для себя много нового и получила полное вдохновение от выступления коллег! Спасибо большое организаторам за такую интересную конференцию!"],["Елена","Фе","he","mail.ru","Понравилось разнообразие тем. Интересно было бы посмотреть открытые уроки для детей-билингвов. Спасибо за возможность получить новые знания и идеи от опытных коллег."],["Юлия","Ро","jo","mail.ru","Я никогда не работала с детьми и даже обычного общения не так много, поэтому море открытий!"],["Мария","Со","ma","gmail.com","Понравилась организация конференции, актуальные темы в нише преподавания именно детям!"],["Анастасия","Ио","an","gmail.com","Все супер! Спасибо! Хочу работать с детьми, и вот пытаюсь разобраться, как это делать! Вы молодцы!"],["Наталья","Вы","na","yandex.ru","Я была только на 1 дне и мне очень понравились доклады Натальи Черкай и Полины Макаровой. Второй день буду смотреть в записи. Спасибо Оле и всей команде за организацию такого замечательного мероприятия!"],["Лариса","Ба","lb","gmail.com","Много интересных идей, требующих осмысления! Спасибо!!!"],["Снежанна","Мо","sn","gmail.com","Спасибо, все понравилось, сверх ожиданий!"],["Светлана","Че","sv","gmail.com","Безумно интересно было. Столько идей и советов! Всем спасибо!"],["Анастасия","Ве","an","gmail.com","Замечательная конференция! Спасибо большое, хотелось бы почаще устраивать такие конференции, посвященные детям."],["Татьяна","Уд","ak","mail.ru","Понравилась тема семинара, она и привлекла. Подбор экспертов хорош на всех ваших мероприятиях, спасибо"],["Ирина","Гр","ig","yandex.ru","Очень интересные темы про использование искусственного интеллекта, а также внедрение различных видов сюжетных уроков:)"]];
+const cols = document.querySelectorAll('.col');
+function safe(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function masked(){return '<span class="mask" aria-label="часть данных скрыта"><i aria-hidden="true">••••••</i></span>'}
+reviews.forEach((r,i)=> {
+  const a=document.createElement('article');a.className='review';
+  a.innerHTML='<div class="mark">“</div><p class="quote">'+safe(r[4])+'</p><div class="person">'+safe(r[0])+' '+safe(r[1])+masked()+'</div><div class="email">'+safe(r[2])+masked()+'@'+safe(r[3])+'</div>';
+  cols[i%3].appendChild(a);
+});
+const scroller=document.getElementById('scroll'),track=document.getElementById('track'),thumb=document.getElementById('thumb');
+const count=document.getElementById('count'),distance=document.getElementById('distance'),progress=document.getElementById('progress');
+const maxScroll=()=>Math.max(1,scroller.scrollHeight-scroller.clientHeight);
+const rail=()=>Math.max(1,track.clientHeight-thumb.clientHeight);
+function sync(){
+  let ratio=Math.min(1,scroller.scrollTop/maxScroll());
+  thumb.style.top=(ratio*rail())+'px';
+  count.textContent=String(Math.max(1,Math.min(reviews.length,Math.round(1+ratio*(reviews.length-1))))).padStart(2,'0')+' / '+reviews.length;
+  progress.textContent=Math.round(ratio*100)+'%';
+  distance.textContent='Длина прокрутки '+Math.round(maxScroll())+' px';
+  track.setAttribute('aria-valuenow',String(Math.round(ratio*100)));
+}
+scroller.addEventListener('scroll',sync,{passive:true});
+document.getElementById('up').onclick=()=>scroller.scrollBy({top:-260,behavior:'smooth'});
+document.getElementById('down').onclick=()=>scroller.scrollBy({top:260,behavior:'smooth'});
+track.addEventListener('click',e=>{if(e.target===thumb)return;let r=track.getBoundingClientRect();scroller.scrollTo({top:Math.max(0,Math.min(1,(e.clientY-r.top-thumb.clientHeight/2)/rail()))*maxScroll(),behavior:'smooth'})});
+let startY=0,startTop=0,dragging=false;
+thumb.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();dragging=true;startY=e.clientY;startTop=scroller.scrollTop;thumb.setPointerCapture(e.pointerId);scroller.style.scrollBehavior='auto'});
+thumb.addEventListener('pointermove',e=>{if(dragging)scroller.scrollTop=startTop+(e.clientY-startY)*maxScroll()/rail()});
+function release(){dragging=false;scroller.style.scrollBehavior='smooth'}
+thumb.addEventListener('pointerup',release);thumb.addEventListener('pointercancel',release);
+track.addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();scroller.scrollBy({top:e.key==='ArrowDown'?150:-150,behavior:'smooth'})}});
+window.addEventListener('resize',sync);sync();
+</script>
+</body>
+</html>
