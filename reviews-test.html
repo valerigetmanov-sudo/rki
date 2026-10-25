@@ -17,12 +17,12 @@ body{margin:0;background:white;color:#252941;font-family:Inter,-apple-system,Bli
 #rki-reviews .plane{position:absolute;right:2%;top:-14px;width:133px;height:98px;pointer-events:none;opacity:.9}
 #rki-reviews .stage{background:#fff;border:1px solid #eff0fa;border-radius:29px;padding:19px 15px 19px 23px;box-shadow:0 12px 55px rgba(57,67,110,.075);display:flex;gap:14px;min-width:0}
 #rki-reviews .window{height:595px;position:relative;min-width:0;flex:1;border-radius:17px;overflow:hidden}
-#rki-reviews .scroller{height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;scroll-behavior:smooth;overscroll-behavior-y:auto;outline-offset:-3px;padding:6px 5px 18px}
+#rki-reviews .scroller{height:100%;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;scroll-behavior:smooth;overscroll-behavior-y:auto;outline-offset:-3px;padding:0 5px 18px}
 #rki-reviews .scroller::-webkit-scrollbar{display:none}
 #rki-reviews .columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:16px}
 #rki-reviews .column{display:flex;flex-direction:column;gap:16px;min-width:0}
-#rki-reviews .column:nth-child(2){padding-top:64px}
-#rki-reviews .column:nth-child(3){padding-top:116px}
+#rki-reviews .column:nth-child(2){padding-top:0}
+#rki-reviews .column:nth-child(3){padding-top:0}
 #rki-reviews .review{background:#f5f7ff;border:1px solid #edf0fc;border-radius:21px;padding:20px 21px 20px;box-shadow:0 5px 17px rgba(67,77,118,.055);min-width:0}
 #rki-reviews .review[data-tone="lavender"]{background:#f6f2ff;border-color:#f0ebff}
 #rki-reviews .review[data-tone="peach"]{background:#fffbf4;border-color:#faf3e9}
@@ -40,7 +40,8 @@ body{margin:0;background:white;color:#252941;font-family:Inter,-apple-system,Bli
 #rki-reviews .mask:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#ffffff30 48%,transparent);filter:blur(3px)}
 #rki-reviews .mask.mailmask{width:4.25em}
 #rki-reviews .fade{position:absolute;left:0;right:0;height:78px;z-index:3;pointer-events:none}
-#rki-reviews .fade.top{top:0;background:linear-gradient(#fff 0%,rgba(255,255,255,.0) 100%)}
+#rki-reviews .fade.top{top:0;background:linear-gradient(#fff 0%,rgba(255,255,255,.0) 100%);opacity:0;transition:opacity .18s ease}
+#rki-reviews .window.has-scrolled .fade.top{opacity:1}
 #rki-reviews .fade.bottom{bottom:0;background:linear-gradient(rgba(255,255,255,0) 0%,#fff 100%)}
 #rki-reviews .controls{width:65px;flex:0 0 65px;display:flex;align-items:center;flex-direction:column;gap:10px;padding:3px 0 3px}
 #rki-reviews .arrow{flex:0 0 44px;width:46px;display:grid;place-items:center;border-radius:50%;border:1px solid #e1e8ff;background:#f5f7ff;box-shadow:0 3px 9px #5365b718;color:#536ef0;font-weight:bold;font-size:24px;cursor:pointer;line-height:1}
@@ -140,6 +141,7 @@ body{margin:0;background:white;color:#252941;font-family:Inter,-apple-system,Bli
   const fraction=maximum()===0?0:scroller.scrollTop/maximum();
   thumb.style.top=(fraction*thumbSpace())+'px';
   track.setAttribute('aria-valuenow',String(Math.round(fraction*100)));
+  scroller.parentElement.classList.toggle('has-scrolled',scroller.scrollTop>10);
  }
  scroller.addEventListener('scroll',update,{passive:true});
  const move=amount=>scroller.scrollBy({top:amount,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
