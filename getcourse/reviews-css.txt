@@ -15,16 +15,16 @@
 #rki-reviews .column{display:flex;flex-direction:column;gap:16px;min-width:0}
 #rki-reviews .column:nth-child(2){padding-top:0}
 #rki-reviews .column:nth-child(3){padding-top:0}
-#rki-reviews .review{background:#f5f7ff;border:1px solid #edf0fc;border-radius:21px;padding:20px 21px 20px;box-shadow:0 5px 17px rgba(67,77,118,.055);min-width:0}
-#rki-reviews .review[data-tone="lavender"]{background:#f6f2ff;border-color:#f0ebff}
-#rki-reviews .review[data-tone="peach"]{background:#fffbf4;border-color:#faf3e9}
-#rki-reviews .review[data-tone="blue"]{background:#f1f7ff;border-color:#ebf2ff}
-#rki-reviews .review[data-tone="mist"]{background:#f7f9fd;border-color:#edf1f7}
+#rki-reviews .review{background:#f3f5fe;border:1px solid #e0e8f9;border-radius:21px;padding:20px 21px 20px;box-shadow:0 5px 17px rgba(67,77,118,.065);min-width:0}
+#rki-reviews .review[data-tone="lavender"]{background:#f0eafe;border-color:#e1d8f9}
+#rki-reviews .review[data-tone="peach"]{background:#fff3e7;border-color:#f5e6d7}
+#rki-reviews .review[data-tone="blue"]{background:#eaf3ff;border-color:#d9e8fb}
+#rki-reviews .review[data-tone="mist"]{background:#edf6f4;border-color:#dbebe7}
 #rki-reviews .mark{display:block;font-family:Georgia,serif;font-size:36px;line-height:.7;color:#9f9bea;height:27px;font-weight:bold;pointer-events:none}
 #rki-reviews .review[data-tone="peach"] .mark{color:#e7b38e}
 #rki-reviews .review[data-tone="blue"] .mark{color:#91b4f2}
 #rki-reviews .review[data-tone="mist"] .mark{color:#a3afe0}
-#rki-reviews .quote{font-size:14px;line-height:1.58;font-weight:400;color:#333b58;margin:10px 0 18px;overflow-wrap:break-word;white-space:normal}
+#rki-reviews .quote{font-size:15px;line-height:1.58;font-weight:400;color:#333b58;margin:10px 0 18px;overflow-wrap:break-word;white-space:normal}
 #rki-reviews .person{font-weight:730;color:#2d3557;font-size:13px;line-height:1.35}
 #rki-reviews .email{font-size:12px;line-height:1.6;color:#8894ae;margin-top:2px}
 #rki-reviews .mask{display:inline-flex;position:relative;vertical-align:-.11em;margin:0 0 0 1px;height:1.02em;width:3.5em;overflow:hidden;border-radius:5px;background:linear-gradient(90deg,#dde4f3cc,#d3ddef88,#e0e7f5bb);isolation:isolate}
@@ -49,7 +49,7 @@
  #rki-reviews .columns{gap:10px}
  #rki-reviews .column{gap:10px}
  #rki-reviews .review{padding:17px}
- #rki-reviews .quote{font-size:13px}
+ #rki-reviews .quote{font-size:14px}
 }
 @media(max-width:650px){
  #rki-reviews .columns{grid-template-columns:minmax(0,1fr)}
@@ -67,7 +67,7 @@
  #rki-reviews .column:nth-child(2){padding-top:0}
  #rki-reviews .column:nth-child(3){display:none;padding-top:0}
  #rki-reviews .review{padding:13px 12px;border-radius:14px}
- #rki-reviews .quote{font-size:12px;margin:7px 0 14px}
+ #rki-reviews .quote{font-size:14px;margin:7px 0 14px}
  #rki-reviews .person{font-size:11px}
  #rki-reviews .email{font-size:10px}
  #rki-reviews .controls{width:43px;flex-basis:43px;gap:8px}
