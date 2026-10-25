@@ -1,0 +1,30 @@
+<section id="rki-reviews" aria-labelledby="rki-reviews-title">
+ <div class="inner">
+  <header class="header">
+   <p class="eyebrow">Отзывы участников 2025</p>
+   <h2 id="rki-reviews-title">Что говорят участники наших конференций</h2>
+   <p class="subheading">Реальные впечатления преподавателей после конференции «РКИ детям» 2025 года</p>
+   <svg class="plane" viewBox="0 0 155 110" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 9 79 C 24 102, 63 106, 62 74 C 61 48, 27 52, 31 77 C 36 102, 94 97, 105 52" stroke="#B4B9FA" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="6 8"/>
+    <path d="M 67 35 L 144 7 L 112 73 L 101 48 L 67 35Z" fill="#E8E7FF" stroke="#938DF1" stroke-width="2.3" stroke-linejoin="round"/>
+    <path d="M 101 48 L 144 7 L 91 61 L 101 48Z" fill="#9CA7FC" stroke="#938DF1" stroke-width="1.5"/>
+   </svg>
+  </header>
+  <div class="stage">
+   <div class="window">
+    <div class="scroller" id="review-scroll" tabindex="0" aria-label="Вертикальная галерея отзывов">
+     <div class="columns" id="review-columns"><div class="column"></div><div class="column"></div><div class="column"></div></div>
+    </div>
+    <div class="fade top"></div><div class="fade bottom"></div>
+   </div>
+   <div class="controls">
+    <button class="arrow" id="review-up" aria-label="Прокрутить отзывы вверх">⌃</button>
+    <div class="track" id="review-track" role="scrollbar" aria-label="Полоса прокрутки отзывов" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+     <div class="thumb" id="review-thumb"></div>
+    </div>
+    <button class="arrow" id="review-down" aria-label="Прокрутить отзывы вниз">⌄</button>
+   </div>
+  </div>
+  <p class="closing">И это только малая часть отзывов!</p>
+ </div>
+</section>
