@@ -1,0 +1,63 @@
+(function(){
+ function init(){
+ const reviews = [["Анна","Ко","mo","yandex.ru","Мне хочется выразить огромную благодарность всем спикерам и организаторам за методические выходные. Мне было очень интересно. Я почерпнула множество идей для себя и зарядилась вдохновением. Новый этап моей профессиональной деятельности получил мощнейший заряд! Спасибо!"],["Алёна","Як","al","gmail.com","Спасибо большое! Очень понравилось, что реальные примеры материалов, ссылок и учебников, а не только теор часть. Еще очень приятно когда в выступлениях есть простой «человеческий тон». Даже удаленный формат сближает )"],["Варвара","Ши","vv","mail.ru","Всё было очень познавательно и ёмко, понравилась вовлечённость спикеров в то, чем они занимаются, искренняя любовь к делу и ученикам. Для меня такое эмоциональное инфополе сейчас очень важно, так как планирую расширить свой репертуар преподавания РКИ работой с детьми. А дети для меня — понятие terra incognita. За эти два дня они стали ближе :)))"],["Полина","Ли","po","gmail.com","Так как я не веду онлайн уроки, в первую очередь интересуют моменты, связанные с методикой проведения живых уроков, в оффлайн формате. В общем и целом, получила поддержку по многим вопросам от практикующих специалистов, записи тоже будут полезны."],["Вера","Ли","ka","gmail.com","Понравились темы с чистой практикой и практическими советами по играм с детьми. Спасибо."],["Кристина","Кл","ak","yandex.ru","Очень понравилось — всё чётко и по делу. Современные методики, талантливые молодые преподаватели. С удовольствием приму участие в подобных конференциях в следующий раз."],["Надежда","Па","na","mail.ru","Большое спасибо за мероприятие всем участникам и практико-ориентированные доклады! Все темы по-своему важны и интересны. Особенно те, которые связаны с инструментами работы с помощью современных технологий, методические находки всегда привлекательны и вдохновляют."],["Виктория","Пи","bl","yahoo.com","Мне нравится практическая направленность подобных мероприятий. А ещё хотелось бы больше вебинаров об организации работы с аудио и видео материалами, а также о механике процесса создания этих материалов с помощью ИИ. Спасибо!"],["Надежда","Са","ns","mail.ru","Интересно было услышать про различные игровые формы и методики работы — это актуально для всех возрастов при изучении иностранных языков. Спасибо огромное за организацию мероприятия!"],["Полина","Пе","po","gmail.com","Понравились доклады про театрализацию на занятиях и использование ИИ в подготовке учебных заданий и листов. Очень актуальная тема. Спасибо за ссылку на ценный ресурс ЩаСпоем!"],["Алёна","Хв","hv","gmail.com","Спасибо большое за очень полезный вебинар и интересных спикеров! Всегда работала со взрослыми студентами, не решалась, сомневалась начать обучение с детьми-билингвами. Надеюсь, этот вебинар будет первым шагом в обучении детей-билингвов."],["Надежда","Жу","NA","yandex.ru","Очень актуальны были идеи как раз для работы с детьми! Куча полезной информации, куча идей, спасибо большое за конференцию"],["Любовь","Ша","sh","ya.ru","Атмосфера на конференции очень доброжелательная, узнала для себя много нового и получила полное вдохновение от выступления коллег! Спасибо большое организаторам за такую интересную конференцию!"],["Елена","Фе","he","mail.ru","Понравилось разнообразие тем. Интересно было бы посмотреть открытые уроки для детей-билингвов. Спасибо за возможность получить новые знания и идеи от опытных коллег."],["Юлия","Ро","jo","mail.ru","Я никогда не работала с детьми и даже обычного общения не так много, поэтому море открытий!"],["Мария","Со","ma","gmail.com","Понравилась организация конференции, актуальные темы в нише преподавания именно детям!"],["Анастасия","Ио","an","gmail.com","Все супер! Спасибо! Хочу работать с детьми, и вот пытаюсь разобраться, как это делать! Вы молодцы!"],["Наталья","Вы","na","yandex.ru","Я была только на 1 дне и мне очень понравились доклады Натальи Черкай и Полины Макаровой. Второй день буду смотреть в записи. Спасибо Оле и всей команде за организацию такого замечательного мероприятия!"],["Лариса","Ба","lb","gmail.com","Много интересных идей, требующих осмысления! Спасибо!!!"],["Снежанна","Мо","sn","gmail.com","Спасибо, все понравилось, сверх ожиданий!"],["Светлана","Че","sv","gmail.com","Безумно интересно было. Столько идей и советов! Всем спасибо!"],["Анастасия","Ве","an","gmail.com","Замечательная конференция! Спасибо большое, хотелось бы почаще устраивать такие конференции, посвященные детям."],["Татьяна","Уд","ak","mail.ru","Понравилась тема семинара, она и привлекла. Подбор экспертов хорош на всех ваших мероприятиях, спасибо"],["Ирина","Гр","ig","yandex.ru","Очень интересные темы про использование искусственного интеллекта, а также внедрение различных видов сюжетных уроков:)"]];
+ const base = document.getElementById('rki-reviews');
+ if(!base || base.dataset.reviewsInitialized==='1') return;
+ base.dataset.reviewsInitialized='1';
+ const cols = Array.from(base.querySelectorAll('.column'));
+ const cards=[];
+ let columnCount=0;
+ const scroller = document.getElementById('review-scroll');
+ const track = document.getElementById('review-track');
+ const thumb = document.getElementById('review-thumb');
+ const safe=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ const mask=which=>'<span class="mask'+(which==='email'?' mailmask':'')+'" aria-label="часть скрыта"></span>';
+ reviews.forEach((r,i)=>{
+  const item=document.createElement('article');
+  item.className='review';
+  item.dataset.tone=['lavender','peach','blue','mist','lavender','blue','peach','mist'][i%8];
+  item.innerHTML='<span class="mark" aria-hidden="true">“</span><p class="quote">'+safe(r[4])+'</p><div class="person">'+safe(r[0])+' '+safe(r[1])+mask('name')+'</div><div class="email">'+safe(r[2])+mask('email')+'@'+safe(r[3])+'</div>';
+  cards.push(item);
+ });
+ function layout(){
+  const n=window.matchMedia('(max-width:650px)').matches?1:window.matchMedia('(max-width:950px)').matches?2:3;
+  if(n===columnCount)return;
+  cols.forEach(c=>c.replaceChildren());
+  cards.forEach((card,i)=>cols[i%n].appendChild(card));
+  columnCount=n;
+  scroller.scrollTop=0;
+ }
+ const maximum=()=>Math.max(0,scroller.scrollHeight-scroller.clientHeight);
+ const thumbSpace=()=>Math.max(1,track.clientHeight-thumb.clientHeight);
+ function update(){
+  const fraction=maximum()===0?0:scroller.scrollTop/maximum();
+  thumb.style.top=(fraction*thumbSpace())+'px';
+  track.setAttribute('aria-valuenow',String(Math.round(fraction*100)));
+  scroller.parentElement.classList.toggle('has-scrolled',scroller.scrollTop>10);
+ }
+ scroller.addEventListener('scroll',update,{passive:true});
+ const move=amount=>scroller.scrollBy({top:amount,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ document.getElementById('review-up').addEventListener('click',()=>move(-290));
+ document.getElementById('review-down').addEventListener('click',()=>move(290));
+ track.addEventListener('click',e=>{
+  if(e.target===thumb)return;
+  const rect=track.getBoundingClientRect();
+  const fraction=Math.max(0,Math.min(1,(e.clientY-rect.top-thumb.clientHeight/2)/thumbSpace()));
+  scroller.scrollTo({top:maximum()*fraction,behavior:'smooth'});
+ });
+ let grabbing=false,fromY=0,fromScroll=0;
+ thumb.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();grabbing=true;fromY=e.clientY;fromScroll=scroller.scrollTop;thumb.setPointerCapture(e.pointerId);scroller.style.scrollBehavior='auto'});
+ thumb.addEventListener('pointermove',e=>{if(grabbing)scroller.scrollTop=fromScroll+(e.clientY-fromY)*maximum()/thumbSpace()});
+ function finish(){grabbing=false;scroller.style.scrollBehavior='smooth'}
+ thumb.addEventListener('pointerup',finish);
+ thumb.addEventListener('pointercancel',finish);
+ track.addEventListener('keydown',e=>{
+  if(e.key==='ArrowDown'||e.key==='ArrowUp'||e.key==='PageDown'||e.key==='PageUp'){
+   e.preventDefault();move((e.key==='ArrowDown'||e.key==='PageDown'?1:-1)*(e.key.startsWith('Page')?400:140));
+  }
+ });
+ window.addEventListener('resize',()=>{layout();update()});
+ layout();update();
+ }
+ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init,{once:true})}else{init()}
+})();
